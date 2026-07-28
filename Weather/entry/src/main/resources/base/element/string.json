@@ -1,0 +1,32 @@
+{
+  "string": [
+    {
+      "name": "app_name",
+      "value": "浮光"
+    },
+    {
+      "name": "module_desc",
+      "value": "浮光 - 每日动态艺术卡片"
+    },
+    {
+      "name": "EntryAbility_desc",
+      "value": "浮光主界面"
+    },
+    {
+      "name": "EntryAbility_label",
+      "value": "浮光"
+    },
+    {
+      "name": "form_desc",
+      "value": "浮光卡片 - 每日动态艺术"
+    },
+    {
+      "name": "permission_activity_reason",
+      "value": "用于读取您的运动步数，以在卡片中展示每日活动数据"
+    },
+    {
+      "name": "permission_distributed_reason",
+      "value": "用于跨设备同步收藏卡片，实现多端流转体验"
+    }
+  ]
+}
