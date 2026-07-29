@@ -49,8 +49,25 @@
 <table>
   <tr>
    <td><img height="300" alt="屏幕截图 2026-07-28 144719" src="https://github.com/user-attachments/assets/636c6165-f448-49eb-befe-fbb0ec3a2ad1" /></td>
-   
+</td>
+  </tr>
+</table>
 
+**项目七：**
+<table>
+  <tr>
+    <td><img width="1817" height="1412" alt="屏幕截图 2026-07-29 094613" src="https://github.com/user-attachments/assets/fe8eaac4-edef-47b0-a969-10e6620354fb" /></td>
+     <td><img width="1808" height="1417" alt="屏幕截图 2026-07-29 094606" src="https://github.com/user-attachments/assets/7a008936-a154-4c03-8cad-2487e73363e1" /></td>
+</td>
+  </tr>
+</table>
+
+**项目八：**
+<table>
+  <tr>
+    <td><img width="2084" height="1475" alt="屏幕截图 2026-07-29 101408" src="https://github.com/user-attachments/assets/0159a8c9-bccb-4098-ae21-c708047083f3" /></td>
+    <td><img width="2086" height="1465" alt="屏幕截图 2026-07-29 101419" src="https://github.com/user-attachments/assets/334141a6-c7b4-4afd-8cd8-d02715954972" /></td>
+    <td><img width="2089" height="1477" alt="屏幕截图 2026-07-29 101428" src="https://github.com/user-attachments/assets/176093ff-4699-4fe9-8c21-7fbe74372273" /></td>
 
 </td>
   </tr>
