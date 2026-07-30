@@ -1,0 +1,16 @@
+{
+  "src": [
+    "pages/Index",
+    "pages/LoginPage",
+    "pages/HomePage",
+    "pages/CoursePage",
+    "pages/CourseDetailPage",
+    "pages/ActivityPage",
+    "pages/ActivityDetailPage",
+    "pages/DiscussionPage",
+    "pages/ServicePage",
+    "pages/HealthPage",
+    "pages/SettingsPage",
+    "pages/ProfilePage"
+  ]
+}
