@@ -1,3 +1,43 @@
+# ArkUI_Project 项目运行背景
+
+## 一、项目概述
+
+**ArkUI_Project** 是一个基于华为鸿蒙（HarmonyOS）操作系统的 **ArkUI** 应用开发练习项目集合，由开发者 **yzbmax**（罗欣童）创建并维护。该项目汇集了多个独立的小型鸿蒙应用，旨在通过实践掌握 ArkUI 声明式 UI 开发框架的核心技术与应用场景。
+
+项目涵盖了从基础的界面构建到复杂的功能实现，包括数字卡片、智能设备控制、校园登录、健康计算等多个方向，是学习和实践鸿蒙应用开发的综合性示例库。
+
+
+## 二、技术栈
+
+| 技术项 | 说明 |
+|--------|------|
+| **操作系统** | HarmonyOS（鸿蒙） |
+| **UI 框架** | ArkUI（声明式 UI 开发框架） |
+| **开发语言** | TypeScript / eTS（扩展 TypeScript） |
+| **构建工具** | hvigor（鸿蒙构建系统） |
+| **包管理** | ohpm（OpenHarmony 包管理器） |
+| **项目配置** | build-profile.json5 / code-linter.json5 |
+
+
+## 三、项目结构
+ArkUI_Project/
+├── Found/ # 失物招领应用
+├── MusicApp/ # 音乐播放器应用
+├── P01_HelloArkUI2/ # 入门级 Hello World 练习
+├── P02_DigitalCard/ # 数字名片应用
+├── P03_* # 更多练习项目
+└── README.md # 项目说明文档
+
+## 四、运行环境要求
+
+| 环境项 | 要求 |
+|--------|------|
+| **操作系统** | Windows 10/11、macOS 或 Linux |
+| **开发工具** | DevEco Studio（鸿蒙官方 IDE） |
+| **SDK 版本** | HarmonyOS SDK（对应 API 版本） |
+| **运行设备** | 鸿蒙手机 / 模拟器 / 真机调试 |
+| **Node.js** | 建议 v14.0 及以上 |
+
 **项目一：**
 <table>
   <tr>
