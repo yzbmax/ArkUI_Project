@@ -1,0 +1,27 @@
+{
+  "src": [
+    "pages/Splash",
+    "pages/Login",
+    "pages/Register",
+    "pages/ForgotPassword",
+    "pages/MainTab",
+    "pages/SearchPage",
+    "pages/Category",
+    "pages/PostDetail",
+    "pages/PublishLost",
+    "pages/PublishFound",
+    "pages/Match",
+    "pages/Chat",
+    "pages/ClaimForm",
+    "pages/ClueForm",
+    "pages/ClaimReview",
+    "pages/ClueReview",
+    "pages/EditProfile",
+    "pages/MyPosts",
+    "pages/MyClaims",
+    "pages/Favorites",
+    "pages/Credit",
+    "pages/Settings",
+    "pages/Admin"
+  ]
+}

@@ -1,0 +1,396 @@
+%% 黑马云音乐 · 合并类图
+classDiagram
+    direction TB
+
+    %% ===== 数据模型层 models/index.ets =====
+    class TabType {
+        +text: string
+        +name: string
+        +icon?: Resource
+    }
+    class SwiperType {
+        +id: string
+        +img: string
+        +color: string
+        +title: string
+    }
+    class DailyRecommendType {
+        +id: string
+        +img: string
+        +color: string
+        +title: string
+        +type: string
+        +top: string
+        +bottom: string
+    }
+    class RecommendListType {
+        +id: string
+        +img: string
+        +color: string
+        +title: string
+        +count: string
+    }
+    class SongItemType {
+        +id: string
+        +img: string
+        +color: string
+        +title: string
+        +artist: string
+        +url: string
+    }
+    class MomentListType {
+        +id: string
+        +author: string
+        +avatar: string
+        +avatarColor: string
+        +content: string
+        +comment: number
+        +like: number
+        +share: number
+        +song: SongItemType
+    }
+    class UserType {
+        +name: string
+        +vip: boolean
+        +age: number
+        +star: string
+        +city: string
+        +follow: number
+        +fans: number
+        +avatar: string
+        +avatarColor: string
+        +collects: SongItemType[]
+    }
+    class WaterfallItemType {
+        +id: string
+        +img: string
+        +color: string
+        +title: string
+        +artist: string
+        +count: string
+        +ratio: number
+    }
+    class LyricLine {
+        +time: number
+        +text: string
+    }
+    class PlayState {
+        +img: string
+        +color: string
+        +title: string
+        +artist: string
+        +url: string
+        +playIndex: number
+        +time: number
+        +duration: number
+        +isPlay: boolean
+        +playMode: string
+        +playList: SongItemType[]
+        +lyricLines: LyricLine[]
+    }
+
+    %% ===== 数据访问层 services =====
+    class MusicRepository {
+        <<interface>>
+        +getSwiper() Promise~SwiperType[]~
+        +getDailyRecommend() Promise~DailyRecommendType[]~
+        +getRecommendList() Promise~RecommendListType[]~
+        +getSongList() Promise~SongItemType[]~
+        +getMomentList() Promise~MomentListType[]~
+        +getUser() Promise~UserType~
+        +searchSongs(keyword) Promise~SongItemType[]~
+        +getWaterfallPage(page, pageSize) Promise~WaterfallItemType[]~
+        +getLyric(id) Promise~string~
+    }
+    class MockMusicRepository {
+        -MOCK_WF_TITLES: string[]
+        -MOCK_WF_ARTISTS: string[]
+        +getSwiper() Promise~SwiperType[]~
+        +getDailyRecommend() Promise~DailyRecommendType[]~
+        +getRecommendList() Promise~RecommendListType[]~
+        +getSongList() Promise~SongItemType[]~
+        +searchSongs(keyword) Promise~SongItemType[]~
+        +getMomentList() Promise~MomentListType[]~
+        +getUser() Promise~UserType~
+        +getWaterfallPage(page, pageSize) Promise~WaterfallItemType[]~
+        +getLyric(id) Promise~string~
+    }
+    class HttpMusicRepository {
+        -BASE_URL: string
+        -get~T~(path) Promise~T~
+        +getSwiper() Promise~SwiperType[]~
+        +getDailyRecommend() Promise~DailyRecommendType[]~
+        +getRecommendList() Promise~RecommendListType[]~
+        +getSongList() Promise~SongItemType[]~
+        +getMomentList() Promise~MomentListType[]~
+        +getUser() Promise~UserType~
+    }
+    class ItunesMusicRepository {
+        -mock: MockMusicRepository
+        -waterfallTerms: string[]
+        -searchTracks(term) Promise~ItunesTrack[]~
+        -cover(t) string
+        -toSong(t) SongItemType
+        -buildWaterfall(page, tracks, pageSize) WaterfallItemType[]
+        +getSwiper() Promise~SwiperType[]~
+        +getDailyRecommend() Promise~DailyRecommendType[]~
+        +getRecommendList() Promise~RecommendListType[]~
+        +getWaterfallPage(page, pageSize) Promise~WaterfallItemType[]~
+        +getMomentList() Promise~MomentListType[]~
+        +getUser() Promise~UserType~
+        +getSongList() Promise~SongItemType[]~
+        +getLyric(id) Promise~string~
+        +searchSongs(keyword) Promise~SongItemType[]~
+    }
+
+    %% ===== 播放控制层 utils =====
+    class AVPlayerManager {
+        -instance: AVPlayerManager
+        -avPlayer: media.AVPlayer
+        -timer: number
+        -getState() PlayState
+        -loadLyric(id) void
+        -startPlay(url) void
+        -startAVPlayer(url) void
+        -startFakeTicker() void
+        -stopTimer() void
+        -onTrackEnd() void
+        -applyCurrentIndex(s) void
+        +getInstance() AVPlayerManager
+        +singPlay(song, list?) void
+        +play() void
+        +pause() void
+        +toggle() void
+        +next() void
+        +prev() void
+        +seek(time) void
+        +switchMode() void
+        +select(index) void
+        +removeFromList(index) void
+        +release() void
+    }
+    class AVSessionManager {
+        -instance: AVSessionManager
+        -session: avSession.AVSession
+        +getInstance() AVSessionManager
+        +init(context) void
+        +update(state) void
+        +destroy() void
+    }
+
+    %% ===== UI 组件层 components =====
+    class CoverImage {
+        +color: string
+        +radius: number|string
+        +text: string
+        +img?: string
+        +fit: ImageFit
+        +build() void
+    }
+    class IconSlot {
+        +iconSize: number
+        +label: string
+        +bg: string
+        +fg: string
+        +icon?: Resource
+        +build() void
+    }
+    class MiniBar {
+        +playState: PlayState
+        +build() void
+    }
+    class TabBar {
+        +activeIndex: number
+        +tabs: TabType[]
+        +onTabClick: Function
+        +build() void
+    }
+    class SongCard {
+        +color: string
+        +title: string
+        +subtitle: string
+        +img?: string
+        +cardRadius: number
+        +cardWidth: number
+        +build() void
+    }
+    class SongItemRow {
+        +color: string
+        +title: string
+        +artist: string
+        +img?: string
+        +onPlay: Function
+        +build() void
+    }
+    class WaterfallCard {
+        +item: WaterfallItemType
+        +cardWidth: number
+        +onPlay: Function
+        +build() void
+    }
+    class SkeletonCard {
+        +cardWidth: number
+        +ratio: number
+        +build() void
+    }
+    class LoadingFooter {
+        +build() void
+    }
+    class EmptyState {
+        +onRetry: Function
+        +build() void
+    }
+    class ErrorState {
+        +onRetry: Function
+        +build() void
+    }
+    class WaterfallDataSource {
+        -data: WaterfallItemType[]
+        -listeners: IDataChangeListener[]
+        +constructor(init?)
+        +pushPage(items) void
+        +reset(items) void
+        +totalCount() number
+        +getData(index) WaterfallItemType
+        +registerDataChangeListener(l) void
+        +unregisterDataChangeListener(l) void
+    }
+
+    %% ===== 页面 / 视图层 pages / views =====
+    class EntryAbility {
+        -DOMAIN: number
+        +onCreate(want, launchParam) void
+        +onWindowStageCreate(windowStage) void
+        +onWindowStageDestroy() void
+    }
+    class Start {
+        +seconds: number
+        -timer: number
+        -total: number
+        +aboutToAppear() void
+        -enterHome() void
+        +aboutToDisappear() void
+        +build() void
+    }
+    class Index {
+        +activeIndex: number
+        -tabs: TabType[]
+        +build() void
+    }
+    class Recommend {
+        +swipers: SwiperType[]
+        +daily: DailyRecommendType[]
+        +recommends: RecommendListType[]
+        +wfList: WaterfallItemType[]
+        +wfLeft: WaterfallItemType[]
+        +wfRight: WaterfallItemType[]
+        +wfStatus: WfStatus
+        +wfPage: number
+        +wfLoadingMore: boolean
+        +wfNoMore: boolean
+        +aboutToAppear() void
+        -loadWaterfallFirst() void
+        -loadWaterfallNext() void
+        -splitWaterfallColumns() void
+        -extractDominantColor(url) Promise~string~
+        +build() void
+    }
+    class Find {
+        +songs: SongItemType[]
+        +keyword: string
+        +aboutToAppear() void
+        -loadDefault() void
+        -doSearch() void
+        -playSong(song) void
+        +build() void
+    }
+    class Moment {
+        +moments: MomentListType[]
+        +aboutToAppear() void
+        -playSong(song) void
+        +build() void
+    }
+    class Mine {
+        +isLogin: boolean
+        +showLogin: boolean
+        +user: UserType
+        +username: string
+        +password: string
+        +loginError: string
+        +aboutToAppear() void
+        -loadUser() void
+        -doLogin() void
+        -doLogout() void
+        -buildLoginEntry() void
+        -buildLoginForm() void
+        -buildUserProfile() void
+        +build() void
+    }
+    class Play {
+        +playState: PlayState
+        +panelShow: boolean
+        +showLyric: boolean
+        +lyricIndex: number
+        -player: AVPlayerManager
+        -lyricScroller: Scroller
+        +onStateChange() void
+        +syncLyric() void
+        +aboutToAppear() void
+        -modeIcon() Resource
+        -deleteBuilder(index) void
+        +build() void
+    }
+    class Playlist {
+        +title: string
+        +songs: SongItemType[]
+        +cover: string
+        +loading: boolean
+        +aboutToAppear() void
+        -playSong(song) void
+        -playAll() void
+        +build() void
+    }
+
+    %% ===== 数据模型关系 =====
+    MomentListType --> SongItemType : 内嵌歌曲
+    UserType --> SongItemType : 收藏列表
+    PlayState --> SongItemType
+    PlayState --> LyricLine
+
+    %% ===== 数据访问层关系 =====
+    MusicRepository <|.. MockMusicRepository : 实现
+    MusicRepository <|.. HttpMusicRepository : 实现
+    MusicRepository <|.. ItunesMusicRepository : 实现
+    ItunesMusicRepository --> MockMusicRepository : 兜底依赖
+
+    %% ===== 播放控制层关系 =====
+    AVPlayerManager --> PlayState : 读写全局状态
+    AVSessionManager --> AVPlayerManager : 播控回调驱动
+    AVSessionManager --> PlayState : 同步锁屏元数据
+
+    %% ===== 组件关系 =====
+    MiniBar --> CoverImage
+    MiniBar --> IconSlot
+    MiniBar --> PlayState
+    TabBar --> IconSlot
+    SongCard --> CoverImage
+    SongItemRow --> CoverImage
+    WaterfallCard --> CoverImage
+    WaterfallDataSource --> WaterfallItemType
+
+    %% ===== 页面关系 =====
+    Start --> Index
+    Index --> Recommend
+    Index --> Find
+    Index --> Moment
+    Index --> Mine
+    Index --> MiniBar
+    Index --> TabBar
+    Recommend --> SongCard
+    Recommend --> WaterfallCard
+    Recommend --> WaterfallDataSource
+    Find --> SongItemRow
+    Playlist --> SongItemRow
+    Play --> CoverImage
+    Play --> IconSlot
+    Play --> AVPlayerManager

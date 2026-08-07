@@ -1,0 +1,27 @@
+{
+  "float": [
+    { "name": "space_2", "value": "2vp" },
+    { "name": "space_4", "value": "4vp" },
+    { "name": "space_8", "value": "8vp" },
+    { "name": "space_12", "value": "12vp" },
+    { "name": "space_16", "value": "16vp" },
+    { "name": "space_20", "value": "20vp" },
+    { "name": "space_24", "value": "24vp" },
+    { "name": "space_32", "value": "32vp" },
+    { "name": "space_40", "value": "40vp" },
+    { "name": "radius_sharp", "value": "4vp" },
+    { "name": "radius_rounded", "value": "8vp" },
+    { "name": "radius_generous", "value": "12vp" },
+    { "name": "radius_feature", "value": "16vp" },
+    { "name": "radius_hero", "value": "24vp" },
+    { "name": "font_display", "value": "28fp" },
+    { "name": "font_h1", "value": "24fp" },
+    { "name": "font_h2", "value": "20fp" },
+    { "name": "font_subtitle", "value": "16fp" },
+    { "name": "font_body", "value": "16fp" },
+    { "name": "font_body_small", "value": "14fp" },
+    { "name": "font_caption", "value": "12fp" },
+    { "name": "font_label", "value": "11fp" },
+    { "name": "font_micro", "value": "10fp" }
+  ]
+}

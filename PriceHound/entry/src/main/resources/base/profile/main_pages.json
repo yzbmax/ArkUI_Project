@@ -1,0 +1,16 @@
+{
+  "src": [
+    "pages/Index",
+    "pages/AddProductPage",
+    "pages/ProductDetailPage",
+    "pages/PriceChartPage",
+    "pages/ComparePage",
+    "pages/AlertSettingPage",
+    "pages/ExportPage",
+    "pages/MonitorSettingPage",
+    "pages/NotificationSettingPage",
+    "pages/AppearanceSettingPage",
+    "pages/BackupRestorePage",
+    "pages/AboutPage"
+  ]
+}

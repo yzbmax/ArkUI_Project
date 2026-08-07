@@ -1,0 +1,18 @@
+{
+  "name": "found-server",
+  "version": "1.0.0",
+  "private": true,
+  "description": "校园失物招领 App 后端 API（Express + MySQL harmony 库）",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "seed": "node seed.js"
+  },
+  "dependencies": {
+    "express": "^4.19.2",
+    "mysql2": "^3.11.0",
+    "bcryptjs": "^2.4.3",
+    "jsonwebtoken": "^9.0.2",
+    "cors": "^2.8.5"
+  }
+}
